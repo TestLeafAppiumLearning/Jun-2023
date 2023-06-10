@@ -12,7 +12,7 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class LearnTouchActions {
+public class LearnPointerInput {
     public static void main(String[] args) throws MalformedURLException, InterruptedException {
         DesiredCapabilities dc = new DesiredCapabilities();
         dc.setCapability("platformName","Android");
