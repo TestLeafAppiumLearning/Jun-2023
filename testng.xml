@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/lokthy/IdeaProjects/TestLeafAppiumJun2023/src/main/java/learning/LearnWrappers.java">
+        <classes>
+            <class name="learning.LearnWrappers">
+                <methods>
+                    <include name="runCode"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
