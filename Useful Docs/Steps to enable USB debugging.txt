@@ -14,6 +14,7 @@ For Custom OS devices --> Please do the below changes in Developer Options
 4. Verify bytecode of debuggable apps --> Disabled
 5. Force allow apps to write on external devices --> Enabled
 6. Force allow apps on external --> Enabled
+7. Disable permission monitoring --> Enabled
 Note: Check if you have above option and update based on need
 Note: While the script is executing check if you are asked to allow to install the apps. In few devices you need to manually approve the apps to be installed.
 
