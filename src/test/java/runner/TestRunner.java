@@ -13,12 +13,6 @@ import wrappers.GenericWrappers;
         "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
 
 public class TestRunner extends GenericWrappers {
-//	@Override
-//	@DataProvider(parallel = true)
-//	public Object[][] scenarios() {
-//		return super.scenarios();
-//	}
-
     @Parameters({"platformName", "deviceName", "udid", "appPackage", "appActivity", "automationName",
             "chromeDriverPort", "systemPort", "xcodeOrgId", "xcodeSigningId", "bundleId", "app", "mjpegServerPort",
             "wdaLocalPort"})
