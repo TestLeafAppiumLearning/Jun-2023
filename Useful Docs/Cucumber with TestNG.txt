@@ -1,0 +1,88 @@
+Manual testing
+Suite
+	Scenarios
+		Test cases
+			Test steps
+
+TestNG
+Suite
+	Test
+		Class
+			Method
+
+Cucumber
+Project
+	Features
+		Scenarios
+			Steps
+
+
+
+Cucumber
+
+Project
+Feature -- Scenario
+Steps
+
+Step def
+Automation Library
+Test runner
+
+Gherkin
+Given --- Pre condition
+When -- Step to be executed
+Then -- Expected result
+And -- Support keyword for other keywords
+But -- Expected result but for negative condition
+* -- Wild card (any)
+
+Maven
+src/main/java
+stepDef
+	StepDef.java
+	AppiumDriver driver = new AppiumDriver();
+	@Given("App is launched successfully")
+	public void launch() {
+	dc....
+	driver = new Android/IOS...... 
+	}
+	@Given("I enter the username")
+	public void a() {
+	driver.findElement(By.Id.......
+	}
+	@Given("I enter the password")
+	public void b() {
+	driver.findElement(By.Id.......
+	}
+	@Given("I click Login button")
+	public void c() {
+	driver.findElement(By.Id.......
+	}
+	@Given("Home page is displayed")
+	public void d() {
+	driver.findElement(By.Id.......
+	}
+src/main/resources
+src/test/java
+testRunner
+	TestRunner.java extends AbstractTestNGCucumberTests
+	@CucumberOptions(features={"src/test/resources/features"}, glue={"stepDef"})
+	public class TestRunner() {}
+src/test/resources
+features	
+	Login.feature
+	Feature: <Scenario Name>
+	Background: <Pre condition for all the test cases(scenarios) in the file>
+	Given App is launched successfully
+	Scenario: Login
+	When I enter the username
+	And I enter the password
+	And I click Login button
+	Then Home page is displayed
+	
+	
+
+
+
+
+

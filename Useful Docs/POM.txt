@@ -1,0 +1,64 @@
+Page Object Model 
+
+Rules of POM
+1. There should a generic wrapper class
+2. Every page should be a separate class and it should inherit the wrapper class
+3. Every action should be a separate method in page
+4. Every method should have the return type and return to the page where it lands post competion
+5. Verify the page it is landed.
+
+Maven Project
+src/main/java
+wrapper
+	GenericWrappers.java
+		public static AppiumDriver driver = new AppiumDriver();
+		.......
+pages
+	HomePage.java extends GenericWrappers
+	public HomePage() {
+		verifyEleIsDisplayed(<Unique element of the page>);
+		}
+	LoginPage.java extends GenericWrappers
+		public LoginPage() {
+		verifyEleIsDisplayed(<Unique element of the page>);
+		}
+		public LoginPage enterUserName() {
+		return this;
+		}
+		public LoginPage enterPassword() {
+		return this;
+		}
+		public LoginPage clickLoginForFailure() {
+		return this;
+		}
+		public HomePage clickLoginForSuccess() {
+		return new HomePage();
+		}
+src/main/resources
+src/test/java
+testcases
+	TC001.java
+		public static void main(String[] args) {
+		GenericWrappers gw = new GenricWrappers();
+		gw.launchApp(....);
+		new LoginPage().enterUserName().enterPassword().clickLoginForSuccess();
+		}
+src/test/resources
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

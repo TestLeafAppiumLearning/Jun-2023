@@ -1,0 +1,100 @@
+Page Object Model 
+
+Rules of POM
+1. There should a generic wrapper class
+2. Every page should be a separate class and it should inherit the wrapper class
+3. Every action should be a separate method in page
+4. Every method should have the return type and return to the page where it lands post competion
+5. Verify the page it is landed.
+
+Maven Project
+src/main/java
+uits
+	Reporter.java
+	..........
+wrapper
+	GenericWrappers.java
+		public static AppiumDriver driver = new AppiumDriver();
+		.......
+	ProjectSpecificWrappers.java extends GenericWrappers
+	@BeforeMethod
+		public void launchMethod() {
+		launchApp(....);
+		}
+pages
+	HomePage.java extends GenericWrappers
+	public HomePage() {
+		verifyEleIsDisplayed(<Unique element of the page>);
+		}
+	LoginPage.java extends GenericWrappers
+		public LoginPage() {
+		verifyEleIsDisplayed(<Unique element of the page>);
+		//1. Find what is the platform (Android/iOS) I am running the script
+		//2. Load the property file of respective platform
+		PageFactory.initElements(new AppiumFieldDecorator(driver),this);
+		}
+
+		@AndroidFindBy(id="...")
+		@iOSXCUITFindBy(xpath="---")
+		private WebElement userName;
+
+		public LoginPage enterUserName() {
+		//enterValue(getWebElement(Locators.......,prop.getProp(key)));
+		enterValue(userName,"rajkumar@testleaf.com");
+		return this;
+		}
+		public LoginPage enterPassword() {
+		.....
+		return this;
+		}
+		public LoginPage clickLoginForFailure() {
+		....
+		return this;
+		}
+		public HomePage clickLoginForSuccess() {
+		.....
+		return new HomePage();
+		}
+src/main/resources
+src/test/java
+testcases
+	TC001.java extends ProjectSpecificWrappers
+		@Test
+		public void runCode() {
+		new LoginPage().enterUserName().enterPassword().clickLoginForSuccess();
+		}
+	TC002.java extends ProjectSpecificWrappers
+		@Test
+		public void runCode() {
+		launchApp(....);
+		new LoginPage().enterUserName().enterPassword().clickLoginForFailure();
+		}
+src/test/resources
+
+testng.xml
+<suite...
+	<test...
+		<classes>
+			<class name=testcases.TC001"/>
+			<class name=testcases.TC002"/>
+		</classes>
+	</test>
+</suite>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

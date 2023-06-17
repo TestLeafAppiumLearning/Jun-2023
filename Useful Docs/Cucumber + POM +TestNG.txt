@@ -1,0 +1,122 @@
+Manual testing
+Suite
+	Scenarios
+		Test cases
+			Test steps
+
+TestNG
+Suite
+	Test
+		Class
+			Method
+
+Cucumber
+Project
+	Features
+		Scenarios
+			Steps
+
+
+
+Cucumber
+
+Project
+Feature -- Scenario
+Steps
+
+Step def
+Automation Library
+Test runner
+
+Gherkin
+Given --- Pre condition
+When -- Step to be executed
+Then -- Expected result
+And -- Support keyword for other keywords
+But -- Expected result but for negative condition
+* -- Wild card (any)
+Page Object Model 
+
+Rules of POM
+1. There should a generic wrapper class
+2. Every page should be a separate class and it should inherit the wrapper class
+3. Every action should be a separate method in page
+4. Every method should have the return type and return to the page where it lands post competion
+5. Verify the page it is landed.
+
+Maven
+src/main/java
+wrapper
+	GenericWrappers.java extends AbstractTestNGCucumberTests
+		public static AppiumDriver driver = new AppiumDriver();
+		.......	
+pages
+	HomePage.java extends GenericWrappers
+	public HomePage() {
+		verifyEleIsDisplayed(<Unique element of the page>);
+		}
+
+	@Given("Home page is displayed")
+	public HomePage verifyPage() {
+		verifyEleIsDisplayed(<Unique element of the page>);
+	}
+	LoginPage.java extends GenericWrappers
+		public LoginPage() {
+		verifyEleIsDisplayed(<Unique element of the page>);
+		//1. Find what is the platform (Android/iOS) I am running the script
+		//2. Load the property file of respective platform
+		PageFactory.initElements(new AppiumFieldDecorator(driver),this);
+		}
+
+		@AndroidFindBy(id="...")
+		@iOSXCUITFindBy(xpath="---")
+		private WebElement userName;
+
+		@Given("I enter the username")
+		public LoginPage enterUserName() {
+		//enterValue(getWebElement(Locators.......,prop.getProp(key)));
+		enterValue(userName,"rajkumar@testleaf.com");
+		return this;
+		}
+		
+		@Given("I enter the password")
+		public LoginPage enterPassword() {
+		.....
+		return this;
+		}
+
+		@Given("I click Login button")
+		public void clickLoginForSuccess() {
+		.....
+		//return new HomePage();
+		}
+
+src/main/resources
+src/test/java
+testRunner
+	TestRunner.java extends GenericWrappers
+	@CucumberOptions(features={"src/test/resources/features"}, glue={"pages"})
+	public class TestRunner() {
+	@BeforeMethod
+		public void launchMethod() {
+		launchApp(....);
+		}
+	}
+src/test/resources
+features	
+	Login.feature
+	Feature: <Scenario Name>
+	Background: <Pre condition for all the test cases(scenarios) in the file>
+	Given App is launched successfully
+	Scenario: Login
+	When I enter the username
+	And I enter the password
+	And I click Login button
+	Then Home page is displayed
+	
+	
+
+
+
+
+
