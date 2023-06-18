@@ -1,0 +1,17 @@
+Appium
+
+Mandatory caps if IPA/APP file is available
+
+platformName --> iOS
+deviceName --> Exact match (recommended) (or) Any (only if UDID cap is passed)
+app --> Absolute Path of my ipa/app in my local machine
+automationName --> XCUITest
+udid --> Unique Device IDentifier (Identifier of the device) optional if exact device name of simulator is passed
+
+Mandatory caps if APP/IPA file is not available
+
+platformName --> iOS
+deviceName --> Exact match (recommended) (or) Any (only if UDID cap is passed)
+bundleId --> bundle identifier given by developer
+automationName --> XCUITest
+udid --> Unique Device IDentifier (Identifier of the device) optional if exact device name of simulator is passed
