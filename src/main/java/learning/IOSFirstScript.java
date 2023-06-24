@@ -14,10 +14,10 @@ public class IOSFirstScript {
         dc.setCapability("platformName", "iOS");
 //        dc.setCapability("deviceName", "iPhone 14");
         dc.setCapability("deviceName", "iPhone 14 Simulator");
-        dc.setCapability("udid","70BDED6E-B9EE-48DE-B44E-FAEC8BEC5A7C");
+        dc.setCapability("udid", "70BDED6E-B9EE-48DE-B44E-FAEC8BEC5A7C");
         dc.setCapability("app", System.getProperty("user.dir") + "/apks/UiCatalog.zip");
 //        dc.setCapability("bundleId","com.example.apple-samplecode.UICatalog");
-        dc.setCapability("automationName","XCUITest");
+        dc.setCapability("automationName", "XCUITest");
         AppiumDriver driver = new AppiumDriver(new URL("http://0.0.0.0:4723/wd/hub"), dc);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.findElement(AppiumBy.accessibilityId("Action Sheets")).click();

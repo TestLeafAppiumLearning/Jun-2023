@@ -18,18 +18,18 @@ public class IosWebWrappers extends IosNativeWrappers {
         switchToAnotherApp("com.apple.Preferences");
         switchNativeView();
         swipeDownInApp();
-        enterValue(getWebElement(Locators.XPATH.toString(), "//*[@label='Search']"), "Safari");
+        enterValue(getWebElement(Locators.XPATH.asString(), "//*[@label='Search']"), "Safari");
         try {
-            click(getWebElement(Locators.XPATH.toString(), "//XCUIElementTypeCell[2]//*[@name='Safari']"));
+            click(getWebElement(Locators.XPATH.asString(), "//XCUIElementTypeCell[2]//*[@name='Safari']"));
         } catch (Exception e) {
-            click(getWebElement(Locators.XPATH.toString(), "//*[@label='Safari']"));
+            click(getWebElement(Locators.XPATH.asString(), "//*[@label='Safari']"));
         }
         sleep(1000);
-        swipeUpInAppUntilElementIsVisible(Locators.XPATH.toString(),
+        swipeUpInAppUntilElementIsVisible(Locators.XPATH.asString(),
                 "//*[@value='Clear History and Website Data' and @visible='true']");
-        click(getWebElement(Locators.XPATH.toString(),
+        click(getWebElement(Locators.XPATH.asString(),
                 "//*[@value='Clear History and Website Data' and @visible='true']"));
-        click(getWebElement(Locators.XPATH.toString(), "//*[@label='Clear' or @label='Clear History and Data']"));
+        click(getWebElement(Locators.XPATH.asString(), "//*[@label='Clear' or @label='Clear History and Data']"));
         stopRunningApp("com.apple.Preferences");
         switchToAnotherApp("com.apple.mobilesafari");
         switchWebView();
@@ -43,7 +43,7 @@ public class IosWebWrappers extends IosNativeWrappers {
             switchNativeView();
         }
         if (isKeyboardShown()) {
-            click(getWebElement(Locators.NAME.toString(), name));
+            click(getWebElement(Locators.NAME.asString(), name));
         }
         if (!isNative) {
             switchContext(context);
@@ -57,7 +57,7 @@ public class IosWebWrappers extends IosNativeWrappers {
             switchNativeView();
         }
         if (isKeyboardShown()) {
-            click(getWebElement(Locators.ACCESSIBILITY_ID.toString(), accessId));
+            click(getWebElement(Locators.ACCESSIBILITY_ID.asString(), accessId));
         }
         if (!isNative) {
             switchContext(context);
@@ -71,7 +71,7 @@ public class IosWebWrappers extends IosNativeWrappers {
             switchNativeView();
         }
         if (isKeyboardShown()) {
-            click(getWebElement(Locators.XPATH.toString(), xPath));
+            click(getWebElement(Locators.XPATH.asString(), xPath));
         }
         if (!isNative) {
             switchContext(context);

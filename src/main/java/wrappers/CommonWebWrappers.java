@@ -67,12 +67,19 @@ public class CommonWebWrappers extends CommonNativeWrappers {
     // To switch the context as WEB-VIEW (Note: Not recommended)
     public void switchWebView() {
         try {
-            Set<String> contextNames = ((SupportsContextSwitching) driver).getContextHandles();
-            for (String contextName : contextNames) {
-                if (contextName.contains("WEBVIEW"))
-                    ((SupportsContextSwitching) driver).context(contextName);
+            boolean switched = false;
+            while (switched == false) {
+                System.out.println("Trying to switch to WebView");
+                Set<String> contextNames = ((SupportsContextSwitching) driver).getContextHandles();
+                for (String contextName : contextNames) {
+                    if (contextName.contains("WEBVIEW")) {
+                        ((SupportsContextSwitching) driver).context(contextName);
+                        System.out.println("Context switched to WebView");
+                        switched = true;
+                    }
+                }
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
             }
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         } catch (Exception e) {
             e.printStackTrace();
         }
