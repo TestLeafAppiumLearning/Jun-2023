@@ -5,9 +5,9 @@ Challenges in Appium
 3. If Appium version is lower, there are chances of failure in latest OS devices --> Always have Android SDK, Build tools , Appium to the latest version
 4. Port no of the Server, Client, Bootstrap.jar installed in device are default if it is not explicitly mentioned
 5. Socket Hangup error is thrown if any of the port is not responding 
-	1. Close the app by code everytime (Recommended to use driver.quit(). )
+	1. Close the app by code every time (Recommended to use driver.quit(). )
 	2. Wait for 60 sec (based on newCommandTimeout capability)
-	3. Delete the apps in Mobile (for Android --> AUT, Appium Settings, UiAutomator Server, UiAutomator Client, for iOS --> WebDriverAgent, AUT)
+	3. Delete the apps in Mobile (for Android --> AUT, Appium Settings, UiAutomator Server, UiAutomator Client (test), for iOS --> WebDriverAgent, AUT)
 	4. Kill the Appium server and ADB (for Android) and then start again
 	5. Last option --> Restart the mobile and laptop/desktop
 6. App could not be installed in device due to below factors
@@ -18,7 +18,7 @@ Challenges in Appium
 8. If the screenshot is disabled in App, Appium Inspector will not be able to identify the locators.
     Option 1: We need to ask Dev team to provide a debug build with secureFlag as false to identify the locators.
     Option 2: Print driver.getPageSource() contents in console. Identify the element manually and try in code. (Time consuming)
-9. If app is obfuscated then we might have challenges in identifying the locators. We might need to use XPATH for all the places eventhough id/name is provided by the dev team
+9. If app is obfuscated then we might have challenges in identifying the locators. We might need to use XPATH for all the places even-though id/name is provided by the dev team
 10. In case if we have added only "app" as part of desired caps, while trying to launch the app we may end up with error stating "Not a launchable activity"/"app permission denied". --> In that case add appPackage and appActivity along with the existing desired capabilities.
 11. During swipe, check if the starting co-ordinates are not overlapping with any other element. PointerInput, TouchAction will not throw any error on failure
 12. In case, if swipe is not working try to print the co-ordinates, validate the same in Appium inspector
@@ -45,13 +45,15 @@ Challenges in Appium
 33. While performing swipe using PointerInput in iOS, there are chances that element in start position gets clicked (may work sometimes)
 34. Swipe within WebElement using pointer input might not work in PickerWheel of iOS (may work sometimes)
 35. While using selectPickerWheelValue in executeScript command, update the value based on the screen size else it would end up in multiple value swipe or next/previous element would not be selected.
-36. WebView value in iOS may change. So hardcoded value might not work
+36. WebView value in iOS may change. So hardcoded value might not work (In iOS, WebView context returned will be a dynamic value. So never try to switch to the exact context via code. Use partial value as WEBVIEW and switch to it)
 37. In iOS, only the visible portion of screen can be used for WebView
 38. I need to view the screen for WebView automation. To identify the locators, I need the device connected in local machine for interaction
 39. For WebView in both platform, I cannot use cloud providers
 40. If noReset is set as true, then the app will not kill and restart for every session in iOS. Solution is to terminate and relaunch everytime or call driver.terminateApp() method
 41. In iOS, we need to use keyboard operation as NATIVE view only
 42. If the name of the finger is similar in PointerInput object creation, then multiple finger will not work
+43. For iOS, GetContextHandles() will print the WebView only for the current app but it takes some time to identify it. So add a sleep or wait till the web view is visible and then switch to it. 
+
 
 
 	

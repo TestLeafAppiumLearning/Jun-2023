@@ -7,6 +7,8 @@ target/*
 pom.xml.releaseBackup
 release.properties
 /test-output/
-*/.DS_STORE/*
+/.DS_STORE/*
 /bin/
 /.idea/*
+.DS_Store
+

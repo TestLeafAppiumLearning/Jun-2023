@@ -82,7 +82,7 @@ public class CommonNativeWrappers {
                 driver = new AndroidDriver(uri.toURL(), dc);
             } else if (platformName.equalsIgnoreCase("iOS")) {
                 // Comment the below line based on need
-//                dc.setCapability("autoAcceptAlerts", true);
+                dc.setCapability("autoAcceptAlerts", true);
                 driver = new IOSDriver(uri.toURL(), dc);
             }
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
